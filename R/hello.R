@@ -13,3 +13,6 @@ filt <-json_text%>% group_by(unitName)%>%summarize(sum_Amount=sum(as.numeric(tra
 
 
 barplot(sum_Amount~unitName,data = filt,xlab = "cityName",ylab = "traffic", space=0.01,beside=true, las=2 )
+
+
+install.packages("knitr")

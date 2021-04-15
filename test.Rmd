@@ -2,7 +2,7 @@
 title: "Diamonds distribution dashboard"
 output: flexdashboard::flex_dashboard
 ---
-
+install.packages("markdown")
 ```{r setup, include = FALSE}
 library(ggplot2)
 library(dplyr)
