@@ -1,0 +1,53 @@
+---
+title: "Traffic Amount"
+output: flexdashboard::flex_dashboard
+runtime: shiny
+---
+
+```{r}
+library(jsonlite)
+library(dplyr)
+library(plyr)
+json_text2<-fromJSON("D://GitHub/Rproject/export.json")
+
+filt2 <-ddply(json_text2,.(unitName,unitCode),summarise,amount=sum(as.numeric(trafficAmout)))
+
+```
+
+
+```{r setup, include = FALSE}
+library(ggplot2)
+
+knitr::opts_chunk$set(fig.width = 5, fig.asp = 1/3)
+```
+
+## Column 1
+
+### Carat
+
+```{r}
+par("mar")
+par(mar=c(1,1,1,1))
+
+ggplot(filt2,mapping = aes(x=unitCode,y=amount))+geom_col(colour="blue")+labs(x="City", y="traffic Amount")
+ 
+```
+
+
+
+### 
+
+
+```{r}
+library(shiny)
+library(DT)
+
+filt2%>% 
+  arrange(unitName)%>% 
+  head(length(filt2$unitName))%>%
+  select(unitName,unitCode,amount) %>%
+  
+  DT::datatable()
+```
+
+
