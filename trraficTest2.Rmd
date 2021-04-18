@@ -8,7 +8,7 @@ runtime: shiny
 library(jsonlite)
 library(dplyr)
 library(plyr)
-json_text2<-fromJSON("D://GitHub/Rproject/export.json")
+json_text2<-fromJSON("C://Users/user01/Documents/export.json")
 
 filt2 <-ddply(json_text2,.(unitName,unitCode),summarise,amount=sum(as.numeric(trafficAmout)))
 
